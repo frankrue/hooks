@@ -43,15 +43,21 @@ fi
 # remove the '.git' from the end
 REPOSITORY_BASENAME=$(REPOSITORY_BASENAME%.git) 
 
+# make a directory name
+DIRECTORY=/var/www/$REPOSITORY_BASENAME
+if [ ! -d "$DIRECTORY" ]; then
+    mkdir $DIRECTORY
+fi
+
 # set the work tree to a folder in the www root
-GIT_WORK_TREE=/var/www/$REPOSITORY_BASENAME/
+GIT_WORK_TREE=$DIRECTORY/
 
 # checkout the files into the work tree
 git checkout -f
 
 # set the symlink for the config.php file
-rm -f /var/www/$REPOSITORY_BASENAME/inc/config.php
-ln -s /var/www/$REPOSITORY_BASENAME/inc/config.staging.php /var/www/$REPOSITORY_BASENAME/inc/config.php
+rm -f $DIRECTORY/inc/config.php
+ln -s $DIRECTORY/inc/config.staging.php $DIRECTORY/inc/config.php
 
 # create the version.txt in the root
-git describe > /var/www/$REPOSITORY_BASENAME/version.txt
+git describe > $DIRECTORY/version.txt
