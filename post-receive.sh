@@ -59,5 +59,5 @@ git checkout -f
 rm -f $DIRECTORY/inc/config.php
 ln -s $DIRECTORY/inc/config.staging.php $DIRECTORY/inc/config.php
 
-# create the version.txt in the root
+# create the version.txt in the root for future reference
 git describe > $DIRECTORY/version.txt
