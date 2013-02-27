@@ -44,7 +44,7 @@ fi
 REPOSITORY_BASENAME=$(REPOSITORY_BASENAME%.git) 
 
 # make a directory name
-DIRECTORY=/var/www/$REPOSITORY_BASENAME
+DIRECTORY=/var/www/dev.gsw-w.com/public_html/$REPOSITORY_BASENAME
 if [ ! -d "$DIRECTORY" ]; then
     mkdir $DIRECTORY
 fi
