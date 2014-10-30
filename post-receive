@@ -35,13 +35,13 @@
 if [ $(git rev-parse --is-bare-repository) = true ]
 then
 	# get the pwd
-    REPOSITORY_BASENAME=$(basename "$PWD") 
+    REPOSITORY_BASENAME=$(basename "$PWD")
 else
 	# get the parent dir
     REPOSITORY_BASENAME=$(basename $(readlink -nf "$PWD"/..))
 fi
 # remove the '.git' from the end
-REPOSITORY_BASENAME=$(REPOSITORY_BASENAME%.git) 
+REPOSITORY_BASENAME=${REPOSITORY_BASENAME%.git}
 
 # make a directory name
 DIRECTORY=/var/www/$REPOSITORY_BASENAME
@@ -50,14 +50,11 @@ if [ ! -d "$DIRECTORY" ]; then
 fi
 
 # set the work tree to a folder in the www root
-GIT_WORK_TREE=$DIRECTORY/
-
-# checkout the files into the work tree
-git checkout -f
+GIT_WORK_TREE=$DIRECTORY/ git checkout develop -f
 
 # set the symlink for the config.php file
-rm -f $DIRECTORY/inc/config.php
-ln -s $DIRECTORY/inc/config.staging.php $DIRECTORY/inc/config.php
+# rm -f $DIRECTORY/inc/config.php
+# ln -s $DIRECTORY/inc/config.staging.php $DIRECTORY/inc/config.php
 
 # create the version.txt in the root for future reference
-git describe > $DIRECTORY/version.txt
+# git describe > $DIRECTORY/version.txt
