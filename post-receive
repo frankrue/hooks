@@ -29,7 +29,7 @@ do
             REPOSITORY_BASENAME=${REPOSITORY_BASENAME%.git}
 
             # make a directory name
-            DIRECTORY=/var/app/current/public/$REPOSITORY_BASENAME
+            DIRECTORY=/var/app/current/demo/$REPOSITORY_BASENAME
             if [ ! -d "$DIRECTORY" ]; then
                 mkdir $DIRECTORY
             fi
