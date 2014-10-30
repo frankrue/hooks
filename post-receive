@@ -35,7 +35,7 @@ do
             fi
 
             # set the work tree to a folder in the www root
-            GIT_WORK_TREE=$DIRECTORY/ git checkout develop -f
+            GIT_WORK_TREE=$DIRECTORY/ git checkout staging -f
 	    			;;
 
 	    *)			# other branches
